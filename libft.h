@@ -3,7 +3,6 @@
 
 # include <stdlib.h>
 
-typedef unsigned long size_t ;
 // ctype.h
 int ft_isalpha(int c);
 int ft_isdigit(int c);
