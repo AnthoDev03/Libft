@@ -27,5 +27,9 @@ void *ft_calloc(size_t num_elements, size_t element_size);
 char *ft_strdup(const char *s);
 size_t ft_strlcat(char *dst, const char *src, size_t size);
 char *ft_strnstr(const char *big, const char *little, size_t len);
- void *ft_memset(void *s, int c, size_t n);
+void *ft_memset(void *s, int c, size_t n);
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char *ft_substr(char const *s, unsigned int start, size_t len);
+char *ft_strjoin(char const *s1, char const *s2);
+
 #endif
