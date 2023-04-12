@@ -1,12 +1,18 @@
 #include "libft.h"
 
-void *ft_calloc(size_t nmemb, size_t size)
+void *ft_calloc(size_t num_elements, size_t element_size)
 {
-	void* ptr;
+	size_t total_size;
+	void *memory;
 
-	ptr = malloc(nmemb * size);
-	if (ptr != NULL) {
-		ft_memset(ptr, 0, nmemb * size);
+	total_size = num_elements * element_size;
+	memory = malloc(total_size);
+
+	if (memory == NULL)
+	{
+		return NULL;
 	}
-	return ptr;
+
+	ft_memset(memory, 0, total_size);
+	return memory;
 }
