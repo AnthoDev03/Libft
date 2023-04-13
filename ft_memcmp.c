@@ -1,20 +1,19 @@
 #include "libft.h"
 
-int ft_memcmp(const void* ptr1, const void* ptr2, size_t num)
+int	ft_memcmp(const void *ptr1, const void *ptr2, size_t num)
 {
-	size_t CountChar;
+	size_t	countchar;
 
-	CountChar = 0;
-	while (CountChar < num) 
+	countChar = 0;
+	while (countchar < num)
 	{
-		if (*(unsigned char*)ptr1 != *(unsigned char*)ptr2)
+		if (*(unsigned char *)ptr1 != *(unsigned char *)ptr2)
 		{
-			return (*(unsigned char*)ptr1) - (*(unsigned char*)ptr2);
+			return ((*(unsigned char *)ptr1) - (*(unsigned char *)ptr2));
 		}
-		CountChar++;
-		ptr1 = (unsigned char*)ptr1 + 1;
-		ptr2 = (unsigned char*)ptr2 + 1;
+		countchar++;
+		ptr1 = (unsigned char *)ptr1 + 1;
+		ptr2 = (unsigned char *)ptr2 + 1;
 	}
-	return 0;
+	return (0);
 }
-

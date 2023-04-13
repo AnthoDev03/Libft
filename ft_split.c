@@ -1,92 +1,86 @@
 #include "libft.h"
 
-static size_t ft_wordcount(char const *s, char c)
+static size_t	ft_wordcount(char const *s, char c)
 {
-    size_t count;
+	size_t	count;
 
-    count = 0;
-    while (*s)
-    {
-        while (*s == c)
-            s++;
-        if (*s)
-        {
-            count++;
-            while (*s && *s != c)
-                s++;
-        }
-    }
-    return count;
+	count = 0;
+	while (*s)
+	{
+		while (*s == c)
+			s++;
+		if (*s)
+		{
+			count++;
+			while (*s && *s != c)
+				s++;
+		}
+	}
+	return (count);
 }
 
-static char *ft_strsub(char const *s, size_t start, size_t len)
+static char	*ft_strsub(char const *s, size_t start, size_t len)
 {
-    char *substr;
+	char	*substr;
 
-    substr = (char *)malloc(len + 1);
-    if (!substr)
-        return NULL;
-
-    ft_strlcpy(substr, s + start, len + 1);
-    return substr;
+	substr = (char *)malloc(len + 1);
+	if (!substr)
+		return (NULL);
+	ft_strlcpy(substr, s + start, len + 1);
+	return (substr);
 }
 
-static void free_allocated_memory(char **result, size_t i)
+static void	free_allocated_memory(char **result, size_t i)
 {
-    size_t j;
+	size_t	j;
 
-    j = 0;
-    while (j < i)
-    {
-        free(result[j]);
-        j++;
-    }
-    free(result);
+	j = 0;
+	while (j < i)
+	{
+		free(result[j]);
+		j++;
+	}
+	free(result);
 }
 
-static char **split_words(char const *s, char c, size_t words, char **result)
+static char	**split_words(char const *s, char c, size_t words, char **result)
 {
-    size_t start;
-    size_t end;
-    size_t i;
+	size_t	start;
+	size_t	end;
+	size_t	i;
 
-    start = 0;
-    i = 0;
-    while (i < words)
-    {
-        while (s[start] == c)
-            start++;
-
-        end = start;
-        while (s[end] && s[end] != c)
-            end++;
-
-        result[i] = ft_strsub(s, start, end - start);
-        if (!result[i])
-        {
-            free_allocated_memory(result, i);
-            return NULL;
-        }
-        start = end;
-        i++;
-    }
-    result[words] = NULL;
-    return result;
+	start = 0;
+	i = 0;
+	while (i < words)
+	{
+		while (s[start] == c)
+			start++;
+		end = start;
+		while (s[end] && s[end] != c)
+			end++;
+		result[i] = ft_strsub(s, start, end - start);
+		if (!result[i])
+		{
+			free_allocated_memory(result, i);
+			return (NULL);
+		}
+		start = end;
+		i++;
+	}
+	result[words] = NULL;
+	return (result);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-    size_t words;
-    char **result;
+	size_t	words;
+	char	**result;
 
-    if (!s)
-        return NULL;
-
-    words = ft_wordcount(s, c);
-    result = (char **)malloc((words + 1) * sizeof(char *));
-    if (!result)
-        return NULL;
-
-    return split_words(s, c, words, result);
+	if (!s)
+		return (NULL);
+	words = ft_wordcount(s, c);
+	result = (char **)malloc((words + 1) * sizeof(char *));
+	if (!result)
+		return (NULL);
+	return (split_words(s, c, words, result));
 }
-
