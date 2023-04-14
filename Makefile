@@ -8,7 +8,7 @@ SRCS_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_b
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror -std=c99
 ARFLAGS = -rcs
 RM = rm -rf
